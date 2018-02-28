@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-mongoose.connect('mongodb+srv://node-api:' + process.env.MONGO_ATLAS_PW + '@node-api-restful-mpvhl.mongodb.net/test');
+mongoose.connect('mongodb://localhost/node-api-restful');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));

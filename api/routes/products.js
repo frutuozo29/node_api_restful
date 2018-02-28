@@ -18,29 +18,27 @@ router.post('/', (req, res, next) => {
     });
 
     product.save()
-        .then(result => {
-            console.log(result);
+        .then(prod => {
+            console.log(prod);
+            res.status(201).json(prod);
         })
-        .catch(err => console.log(err));
-
-    res.status(201).json({
-        message: 'Handling POST request to /products',
-        createdProduct: product
-    });
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err });
+        });
 });
 
 router.get('/:productId', (req, res, next) => {
     const id = req.params.productId;
-    if (id === 'special') {
-        res.status(200).json({
-            message: 'You discovered the special ID',
-            id: id
-        });
-    } else {
-        res.status(200).json({
-            message: 'You passed an ID'
+    Product.findById(id)
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc);
         })
-    }
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err });
+        })
 });
 
 router.patch('/:productId', (req, res, next) => {

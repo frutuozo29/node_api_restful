@@ -1,5 +1,5 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "node-api"
+        "MONGO_ATLAS_PW": "node-api-restful"
     }
 }
